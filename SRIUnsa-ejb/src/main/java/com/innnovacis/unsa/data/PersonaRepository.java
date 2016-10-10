@@ -31,7 +31,9 @@ public class PersonaRepository {
 /*LECTURA DE UN PROCEDIMIENTO ALMACENADO*/
         
 //ali revisa pssssss jajaj
-
+// ILUSOOOOOOOOOOOOOOOOOOOOO
+// AAAAAAAAAAAAAAAAAAAAAAAAAA
+//DDDDDDDDDDDDDDDDDD
 // mañana gana Perú 20 a 0
         Query query = em.createNativeQuery("{call getNombreById(1)}");
         List<String> list=query.getResultList();
