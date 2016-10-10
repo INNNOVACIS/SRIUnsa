@@ -30,7 +30,7 @@ public class PersonaRepository {
 /**ACA ESTAS USANDO CRITERIOS DE HIBERNATE, USA TAMBIEN PROCEDMIENTO ALMACENADOS*/ 
 /*LECTURA DE UN PROCEDIMIENTO ALMACENADO*/
         
-//ali revisa pssssss
+//ali revisa pssssss jajaj
         Query query = em.createNativeQuery("{call getNombreById(1)}");
         List<String> list=query.getResultList();
         System.out.println("=====> " + list);
