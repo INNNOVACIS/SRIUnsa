@@ -30,10 +30,10 @@ public class PersonaRepository {
 /**ACA ESTAS USANDO CRITERIOS DE HIBERNATE, USA TAMBIEN PROCEDMIENTO ALMACENADOS*/ 
 /*LECTURA DE UN PROCEDIMIENTO ALMACENADO*/
         
-//ali se remoja
+//ali revisa pssssss
         Query query = em.createNativeQuery("{call getNombreById(1)}");
         List<String> list=query.getResultList();
-        System.out.println("aaaaaa> " + list);
+        System.out.println("=====> " + list);
         
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Persona> criteria = cb.createQuery(Persona.class);
