@@ -33,7 +33,7 @@ public class PersonaRepository {
 //ali se remoja
         Query query = em.createNativeQuery("{call getNombreById(1)}");
         List<String> list=query.getResultList();
-        System.out.println("=====> " + list);
+        System.out.println("=====a> " + list);
         
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Persona> criteria = cb.createQuery(Persona.class);
