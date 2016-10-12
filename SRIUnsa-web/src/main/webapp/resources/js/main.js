@@ -42,6 +42,10 @@ investigacionApp.config(function($routeProvider){
 		templateUrl : 'resources/views/usuarios.html',
 		controller : 'usuariosController'
 	})
+        .when('/archivos',{
+		templateUrl : 'resources/views/archivos.html',
+		controller : 'archivosController'
+	})
 	.when('/',{
 		templateUrl : 'resources/views/login.html',
 		controller : 'loginController'

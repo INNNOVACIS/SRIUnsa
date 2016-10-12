@@ -6,6 +6,7 @@
 package com.innnovacis.unsa.rest;
 
 import com.innnovacis.unsa.data.ArchivoRepository;
+import com.innnovacis.unsa.model.ArchivoData;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.File;
@@ -45,10 +46,44 @@ public class ArchivosRestServices {
     @GET
     @Path("/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
-    public Response getFile(@PathParam("id") int id) throws FileNotFoundException, IOException, SQLException {
+    public Response descargarArchivo(@PathParam("id") int id) throws FileNotFoundException, IOException, SQLException {
+        System.out.println("id =======> " + id);
+        return archivoRepository.descargarArchivo(id);
+    }
+    
+    @GET
+    @Path("/listarArchivos")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<ArchivoData> getArchivos() {
+        return archivoRepository.getArchivos();
+    }
+    
+    @POST
+    @Path("/actualizarArchivos")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response actualizarArchivo(MultipartFormDataInput input) throws SQLException           
+    {
+        String fileName = "";
+
+        Map<String, List<InputPart>> formParts = input.getFormDataMap();
+        List<InputPart> inPart = formParts.get("file");
+//        int idArchivo = formParts.get("idArchivo");
         
-        return archivoRepository.getFile(id);
-    }  
+        for (InputPart inputPart : inPart) {
+            try {                
+                MultivaluedMap<String, String> headers = inputPart.getHeaders();
+                fileName = parseFileName(headers);
+                InputStream istream = inputPart.getBody(InputStream.class,null);
+                archivoRepository.actualizarArchivo(istream, fileName);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        
+        String output = "File saved to server location : " + fileName;        
+
+        return Response.status(200).entity(output).build();
+    }
     
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)

@@ -32,6 +32,17 @@ public class Archivo implements Serializable {
     @Column(name = "file")
     private Blob file;
     
+    @Column(name = "estado")
+    private int estado;
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
+    
     public int getId() {
         return id;
     }

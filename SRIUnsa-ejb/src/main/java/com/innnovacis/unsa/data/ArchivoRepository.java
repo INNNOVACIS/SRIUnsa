@@ -6,15 +6,14 @@
 package com.innnovacis.unsa.data;
 
 import com.innnovacis.unsa.model.Archivo;
+import com.innnovacis.unsa.model.ArchivoData;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.event.Event;
@@ -41,12 +40,25 @@ public class ArchivoRepository {
     @Inject
     private Event<Archivo> archivoEventSrc;
     
-    Archivo archivo;
+
+    public List<ArchivoData> getArchivos(){
         
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        CriteriaQuery<ArchivoData> criteria = cb.createQuery(ArchivoData.class);
+        Root<ArchivoData> archivoRoot = criteria.from(ArchivoData.class);
+        criteria.select(archivoRoot);     
+        System.out.println("select =====> " + em.createQuery(criteria).getResultList());
+        List<ArchivoData> lstArchivo = em.createQuery(criteria).getResultList();
+        return lstArchivo; 
+    }
+    
+    public void actualizarArchivo(InputStream inStream, String name){
+        
+    }
+    
     public void saveFile(InputStream inStream, String name) throws SQLException, IOException{
         
         Blob blob = null;
-        
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         byte[] buffer = new byte[1024];
         int read;
@@ -63,13 +75,13 @@ public class ArchivoRepository {
         
         Archivo archivo = new Archivo();
         archivo.setTitulo(name);
-        archivo.setFile(blob);
+//        archivo.setFile(blob);
         
         em.merge(archivo);
         archivoEventSrc.fire(archivo);
     }
 
-    public Response getFile (int id) throws SQLException, FileNotFoundException, IOException{
+    public Response descargarArchivo (int id) throws SQLException, FileNotFoundException, IOException{
         
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Archivo> criteria = cb.createQuery(Archivo.class);
@@ -85,8 +97,9 @@ public class ArchivoRepository {
  
         return Response
                 .ok(blobAsBytes, MediaType.APPLICATION_OCTET_STREAM)
-                .header("content-disposition","attachment; filename =" + file.getTitulo())
+                .header("content-disposition",file.getTitulo())
                 .build();
+
     }
     
 }
