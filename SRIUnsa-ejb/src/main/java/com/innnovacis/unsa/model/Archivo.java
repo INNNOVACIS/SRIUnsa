@@ -6,6 +6,7 @@
 package com.innnovacis.unsa.model;
 
 import java.io.Serializable;
+import java.sql.Blob;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,48 +18,41 @@ import javax.persistence.Table;
  * @author innnovacis
  */
 @Entity
-@Table(name = "archivos")
+@Table(name = "archivo")
 public class Archivo implements Serializable {
+   
     @Id
     @GeneratedValue
     @Column(name = "id")
     private int id;
     
-    @Column(name = "title")
-    private String title;
+    @Column(name = "titulo")
+    private String titulo;
     
-    @Column(name = "image")
-    private byte[] image;
+    @Column(name = "file")
+    private Blob file;
     
-    @Column(name = "url")
-    private String url;
     public int getId() {
         return id;
     }
+    
     public void setId(int id) {
         this.id = id;
     }
-    
-    public String getTitle() {
-        return title;
+
+    public String getTitulo() {
+        return titulo;
     }
-    public void setTitle(String title) {
-        this.title=title;
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
- 
-    
-    public byte[] getImage() {
-        return image;
+
+    public Blob getFile() {
+        return file;
     }
-    public void setImage(byte[]  image) {
-        this.image = image;
+
+    public void setFile(Blob file) {
+        this.file = file;
     }
-    
-    public String getUrl() {
-        return url;
-    }
-    public void setUrl(String  url) {
-        this.url = url;
-    }
-    
 }

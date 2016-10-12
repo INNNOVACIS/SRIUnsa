@@ -148,7 +148,7 @@ investigacionApp.controller('homeController', function($log, $scope, $location, 
     };
 
     var uploader = $scope.uploader = new FileUploader({
-            url: 'upload.php'
+            url: 'http://localhost:8080/SRIUnsa-web/rest/files'
         });
 
         // FILTERS
@@ -159,6 +159,11 @@ investigacionApp.controller('homeController', function($log, $scope, $location, 
                 return this.queue.length < 10;
             }
         });
+
+    $scope.uploadAll = function(){
+        console.log("cola :: ", uploader.queue);
+        uploader.uploadAll();
+    }
 
         // CALLBACKS
 

@@ -9,7 +9,7 @@ investigacionApp.service("HomeService", function($log, $http, $q) {
 		var deferred = $q.defer();
 		$http({
 			method : 'POST',
-			url : 'http://localhost:8080/mavenproject3-web/rest/files',
+			url : 'http://localhost:8080/SRIUnsa-web/rest/files',
 			data : request,
 			transformRequest: angular.identity,
 			headers: {'Content-Type': undefined}

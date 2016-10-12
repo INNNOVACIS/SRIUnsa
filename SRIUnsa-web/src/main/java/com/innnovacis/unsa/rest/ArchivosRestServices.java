@@ -9,8 +9,10 @@ import com.innnovacis.unsa.data.ArchivoRepository;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.OutputStream;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 import javax.ejb.Stateless;
@@ -19,6 +21,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
@@ -40,41 +43,40 @@ public class ArchivosRestServices {
     private ArchivoRepository archivoRepository;
     
     @GET
-    @Produces(MediaType.APPLICATION_JSON)
-    public String helloWorld() {
-        return  "aqui para gestionar archivos porfavor" ;
-    }
+    @Path("/{id:[0-9][0-9]*}")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public Response getFile(@PathParam("id") int id) throws FileNotFoundException, IOException, SQLException {
+        
+        return archivoRepository.getFile(id);
+    }  
     
-      
     @POST
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response UploadImage(MultipartFormDataInput input)           
+    public Response uploadFile(MultipartFormDataInput input) throws SQLException           
     {
         String fileName = "";
 
         Map<String, List<InputPart>> formParts = input.getFormDataMap();
 
         List<InputPart> inPart = formParts.get("file");
-
+        System.out.println("lista de inputPart :: " + inPart.size());
+        
         for (InputPart inputPart : inPart) {
 
-            try {
-                // Retrieve headers, read the Content-Disposition header to obtain the original name of the file
+            try {                
                 MultivaluedMap<String, String> headers = inputPart.getHeaders();
                 fileName = parseFileName(headers);
-
-                // Handle the body of that part with an InputStream
                 InputStream istream = inputPart.getBody(InputStream.class,null);
-                fileName = SERVER_UPLOAD_LOCATION_FOLDER + fileName;
-                saveFile(istream,fileName);
-
+//                fileName = SERVER_UPLOAD_LOCATION_FOLDER + fileName;
+                archivoRepository.saveFile(istream, fileName);
+//                saveFile(istream,fileName);
+                
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-
-        String output = "File saved to server location : " + fileName;
-        System.out.println("output ========> " + output);
+        
+        String output = "File saved to server location : " + fileName;        
 
         return Response.status(200).entity(output).build();
     }

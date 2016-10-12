@@ -175,15 +175,15 @@
 											<div class="panel-body">
 												<!--<input type="file" file-upload="files" multiple >-->
 												<input type="file" nv-file-select="" uploader="uploader" multiple  /><br/>
-												<h3>Upload queue</h3>
-                <p>Queue length: {{ uploader.queue.length }}</p>
+												<h3>Cola para subir</h3>
+                <p>Número de Archivos: {{ uploader.queue.length }}</p>
 												<table class="table">
 							                        <thead>
 							                            <tr>
 							                                <th width="50%">Nombre</th>
 							                                <th>Tamaño</th>
 							                                <th>Progreso</th>
-							                                <th>Actions</th>
+							                                <th>Acción</th>
 							                            </tr>
 							                        </thead>
 							                        <tbody>
@@ -196,14 +196,8 @@
 							                                    </div>
 							                                </td>
 							                                <td nowrap>
-							                                    <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
-							                                        <span class="glyphicon glyphicon-upload"></span> Upload
-							                                    </button>
-							                                    <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
-							                                        <span class="glyphicon glyphicon-ban-circle"></span> Cancel
-							                                    </button>
 							                                    <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
-							                                        <span class="glyphicon glyphicon-trash"></span> Remove
+							                                        <span class="glyphicon glyphicon-trash"></span> Eliminar
 							                                    </button>
 							                                </td>
 							                            </tr>
@@ -217,7 +211,7 @@
 							                                <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
 							                            </div>
 							                        </div>
-							                        <button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+							                        <button type="button" class="btn btn-success btn-s" ng-click="uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
 							                            <span class="glyphicon glyphicon-upload"></span> Subir todo
 							                        </button>
 							                        <button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()" ng-disabled="!uploader.isUploading">
