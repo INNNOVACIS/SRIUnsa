@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.innnovacis.unsa.data;
+package com.innnovacis.unsa.borrar;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -24,7 +24,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
 
-import com.innnovacis.unsa.model.Member;
+import com.innnovacis.unsa.modelborrar.Member;
 
 @ApplicationScoped
 public class MemberRepository {

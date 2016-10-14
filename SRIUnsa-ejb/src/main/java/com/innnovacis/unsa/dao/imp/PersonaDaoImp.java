@@ -1,7 +1,8 @@
 
-package com.innnovacis.unsa.data;
+package com.innnovacis.unsa.dao.imp;
 
-import com.innnovacis.unsa.model.Persona;
+import com.innnovacis.unsa.dao.IPersonaDao;
+import com.innnovacis.unsa.modelborrar.Persona;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -9,13 +10,14 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
+import javax.enterprise.context.Dependent;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.transaction.Transactional;
 
 
-@ApplicationScoped
-public class PersonaRepository {
+@Dependent
+public class PersonaDaoImp implements IPersonaDao {
 
     @Inject
     private EntityManager em;

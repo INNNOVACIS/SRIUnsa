@@ -24,7 +24,7 @@ import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.innnovacis.unsa.model.Member;
+import com.innnovacis.unsa.modelborrar.Member;
 import com.innnovacis.unsa.service.MemberRegistration;
 
 // The @Model stereotype is a convenience mechanism to make this a request-scoped bean that has an

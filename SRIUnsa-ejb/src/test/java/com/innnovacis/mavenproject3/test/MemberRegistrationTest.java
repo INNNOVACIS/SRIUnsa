@@ -24,7 +24,7 @@ import javax.inject.Inject;
 
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
-import com.innnovacis.unsa.model.Member;
+import com.innnovacis.unsa.modelborrar.Member;
 import com.innnovacis.unsa.service.MemberRegistration;
 import com.innnovacis.unsa.util.Resources;
 import org.jboss.shrinkwrap.api.Archive;

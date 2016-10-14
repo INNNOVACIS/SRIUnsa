@@ -1,8 +1,9 @@
 
 package com.innnovacis.unsa.rest;
 
-import com.innnovacis.unsa.data.PersonaRepository;
-import com.innnovacis.unsa.model.Persona;
+import com.innnovacis.unsa.business.IPersonaBusiness;
+
+import com.innnovacis.unsa.modelborrar.Persona;
 import com.innnovacis.unsa.service.RegistrarPersona;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +27,7 @@ import javax.ws.rs.core.Response;
 public class HelloWorldService {
     
     @Inject
-    private PersonaRepository personaRepository;
+    private IPersonaBusiness personaBusiness;
     
     @Inject
     private RegistrarPersona registrarPersona;
@@ -34,7 +35,7 @@ public class HelloWorldService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<Persona> helloWorld() {
-        return personaRepository.findAll();
+        return personaBusiness.findAll();
         /*CREA POST TAMBIEN Y QUE RECIBA PARAMETROS*/
     }
     
@@ -75,14 +76,16 @@ public class HelloWorldService {
     @Path("/{id:[0-9][0-9]*}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response DeletePersonById(@PathParam("id") int id) {
-        
-        int v = personaRepository.deleteById(id);
-        //System.out.print("este es el idddddd"+id);
-        if (v == 1) {
-            String output = "DELETE: " + v;
-            return Response.status(200).entity(output).build();
-        }else {throw new ValidationException("borrado no completado"+v);}
-//        return person;
+//        
+//        int v = personaRepository.deleteById(id);
+//        //System.out.print("este es el idddddd"+id);
+//        if (v == 1) {
+//            String output = "DELETE: " + v;
+//            return Response.status(200).entity(output).build();
+//        }else {throw new ValidationException("borrado no completado"+v);}
+////        return person;
+
+return null;
     }
     
     

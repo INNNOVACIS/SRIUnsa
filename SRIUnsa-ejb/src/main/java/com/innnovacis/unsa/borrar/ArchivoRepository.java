@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.innnovacis.unsa.data;
+package com.innnovacis.unsa.borrar;
 
-import com.innnovacis.unsa.model.Archivo;
-import com.innnovacis.unsa.model.ArchivoData;
+import com.innnovacis.unsa.modelborrar.Archivo;
+import com.innnovacis.unsa.modelborrar.ArchivoData;
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;

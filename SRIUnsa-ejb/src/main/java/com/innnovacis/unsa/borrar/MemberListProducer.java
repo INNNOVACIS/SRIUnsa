@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.innnovacis.unsa.data;
+package com.innnovacis.unsa.borrar;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
@@ -25,7 +25,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
 
-import com.innnovacis.unsa.model.Member;
+import com.innnovacis.unsa.modelborrar.Member;
 
 @RequestScoped
 public class MemberListProducer {

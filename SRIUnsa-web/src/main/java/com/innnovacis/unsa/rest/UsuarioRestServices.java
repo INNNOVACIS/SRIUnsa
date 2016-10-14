@@ -5,8 +5,8 @@
  */
 package com.innnovacis.unsa.rest;
 
-import com.innnovacis.unsa.data.UsuarioRepository;
-import com.innnovacis.unsa.model.Usuario;
+import com.innnovacis.unsa.borrar.UsuarioRepository;
+import com.innnovacis.unsa.modelborrar.Usuario;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;

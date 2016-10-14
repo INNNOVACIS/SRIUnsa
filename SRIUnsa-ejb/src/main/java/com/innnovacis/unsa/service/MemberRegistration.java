@@ -16,7 +16,7 @@
  */
 package com.innnovacis.unsa.service;
 
-import com.innnovacis.unsa.model.Member;
+import com.innnovacis.unsa.modelborrar.Member;
 
 import javax.ejb.Stateless;
 import javax.enterprise.event.Event;

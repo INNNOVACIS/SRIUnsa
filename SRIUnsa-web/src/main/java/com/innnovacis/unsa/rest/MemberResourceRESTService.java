@@ -40,8 +40,8 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.innnovacis.unsa.data.MemberRepository;
-import com.innnovacis.unsa.model.Member;
+import com.innnovacis.unsa.borrar.MemberRepository;
+import com.innnovacis.unsa.modelborrar.Member;
 import com.innnovacis.unsa.service.MemberRegistration;
 
 /**

@@ -5,8 +5,8 @@
  */
 package com.innnovacis.unsa.rest;
 
-import com.innnovacis.unsa.data.ArchivoRepository;
-import com.innnovacis.unsa.model.ArchivoData;
+import com.innnovacis.unsa.borrar.ArchivoRepository;
+import com.innnovacis.unsa.modelborrar.ArchivoData;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.File;

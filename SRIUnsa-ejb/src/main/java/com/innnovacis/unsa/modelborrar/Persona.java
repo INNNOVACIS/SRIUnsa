@@ -1,5 +1,5 @@
 
-package com.innnovacis.unsa.model;
+package com.innnovacis.unsa.modelborrar;
 
 import java.io.Serializable;
 

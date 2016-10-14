@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.innnovacis.unsa.data;
+package com.innnovacis.unsa.borrar;
 
-import com.innnovacis.unsa.model.Usuario;
+import com.innnovacis.unsa.modelborrar.Usuario;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
