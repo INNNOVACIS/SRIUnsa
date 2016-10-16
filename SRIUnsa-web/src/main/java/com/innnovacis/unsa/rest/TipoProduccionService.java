@@ -11,18 +11,21 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
  *
  * @author innnovacis
  */
-@Path("/TipoProduccion")
+@Path("/tipoProduccion")
 @RequestScoped
 public class TipoProduccionService {
 
@@ -30,18 +33,23 @@ public class TipoProduccionService {
     private ITipoProduccionBusiness tipoProduccionBusiness;
     
 
-  
+    @GET
+    @Path("/getListTipoProduccion")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<SRITipoProduccion> getListTipoProduccion() {
+        return tipoProduccionBusiness.GetAll();
+    }
     
     @POST
-    @Path("/insert")
+    @Path("/insertTipoProduccion")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public int saveTipoProduccion(SRITipoProduccion tipoProduccion) {
+    public int insertTipoProduccion(SRITipoProduccion tipoProduccion) {
         return tipoProduccionBusiness.Insertar(tipoProduccion);
     }
     
      @PUT
-    @Path("/update")
+    @Path("/updateTipoProduccion")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean updateTipoProduccion(SRITipoProduccion tipoProduccion) {
@@ -50,7 +58,7 @@ public class TipoProduccionService {
     
  
     @PUT
-    @Path("/delete")
+    @Path("/deleteTipoProduccion")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean deleteTipoProduccion(SRITipoProduccion tipoProduccion) {
@@ -58,20 +66,15 @@ public class TipoProduccionService {
     }
     
     @POST
-    @Path("/getById")
+    @Path("/getByIdTipoProduccion")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public SRITipoProduccion getByIdTipoProduccion(int IdTipoProduccion) {
+    public SRITipoProduccion getByIdTipoProduccion(@FormParam("IdTipoProduccion") int IdTipoProduccion) {
         
         return tipoProduccionBusiness.Get(IdTipoProduccion);
     }
     
-    @GET
-    @Path("/getAll")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<SRITipoProduccion> getListTipoProduccion() {
-        return tipoProduccionBusiness.GetAll();
-    }
+  
     
    
 }
