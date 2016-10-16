@@ -16,10 +16,10 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public interface ITipoProduccionDao {
     
-    int Insertar(SRITipoProduccion entidad);
-    boolean Update(SRITipoProduccion entidad);
-    boolean Delete(int idEntidad);
-    SRITipoProduccion Get(int idEntidad);
+    SRITipoProduccion Insert(SRITipoProduccion entidad);
+    SRITipoProduccion Update(SRITipoProduccion entidad);
+    boolean Delete(SRITipoProduccion entidad);
+    SRITipoProduccion GetById(int idEntidad);
     List<SRITipoProduccion> GetAll();
     
 }

@@ -22,7 +22,7 @@ import javax.ws.rs.core.MediaType;
  *
  * @author innnovacis
  */
-@Path("/tipoProduccion")
+@Path("/TipoProduccion")
 @RequestScoped
 public class TipoProduccionService {
 
@@ -30,23 +30,18 @@ public class TipoProduccionService {
     private ITipoProduccionBusiness tipoProduccionBusiness;
     
 
-    @GET
-    @Path("/listarTipoProduccion")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<SRITipoProduccion> getListTipoProduccion() {
-        return tipoProduccionBusiness.GetAll();
-    }
+  
     
     @POST
-    @Path("/registrarTipoProduccion")
+    @Path("/insert")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public int saveTipoProduccion(SRITipoProduccion tipoProduccion) {
         return tipoProduccionBusiness.Insertar(tipoProduccion);
     }
     
-    @PUT
-    @Path("/updateTipoProduccion")
+     @PUT
+    @Path("/update")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean updateTipoProduccion(SRITipoProduccion tipoProduccion) {
@@ -55,10 +50,28 @@ public class TipoProduccionService {
     
  
     @PUT
-    @Path("/deleteTipoProduccion")
+    @Path("/delete")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public boolean deleteTipoProduccion(SRITipoProduccion tipoProduccion) {
         return tipoProduccionBusiness.Delete(tipoProduccion);
     }
+    
+    @POST
+    @Path("/getById")
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public SRITipoProduccion getByIdTipoProduccion(int IdTipoProduccion) {
+        
+        return tipoProduccionBusiness.Get(IdTipoProduccion);
+    }
+    
+    @GET
+    @Path("/getAll")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<SRITipoProduccion> getListTipoProduccion() {
+        return tipoProduccionBusiness.GetAll();
+    }
+    
+   
 }

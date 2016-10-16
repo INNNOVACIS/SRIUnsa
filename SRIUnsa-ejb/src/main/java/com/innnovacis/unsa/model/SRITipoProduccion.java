@@ -12,21 +12,26 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "tipoproduccion")
+@Table(name = "tipoproduccion" )
+@NamedQueries({
+    @NamedQuery(name="SRITipoProduccion.GetAll",query="SELECT p FROM SRITipoProduccion p"),
+    @NamedQuery(name="SRITipoProduccion.GetById",query="SELECT p FROM SRITipoProduccion p WHERE p.NIdTipoProduccion = :idEntidad")
+})
 public class SRITipoProduccion  extends SRIEntidad implements Serializable  {
     
-    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue
-    @Column(name = "idtipoproduccion")
+    @Column(name = "idtipoproduccion" )
     private int NIdTipoProduccion;
 
-    @Column(name = "nombre")
+    @Column(name = "nombretipoproduccion")
     private String SNombreTipoProduccion;
 
     public int getNIdTipoProduccion() {

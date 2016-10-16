@@ -8,6 +8,7 @@ import com.innnovacis.unsa.model.SRITipoProduccion;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.enterprise.context.Dependent;
 
 
@@ -17,12 +18,17 @@ public class TipoProduccionBusinessImp implements ITipoProduccionBusiness {
 
     @Inject
     private ITipoProduccionDao tipoProduccionDao;
+    
+    @Inject
+    private Logger log;
 
     @Override
     public int Insertar(SRITipoProduccion entidad) {
         int id = -1;
         try{
-            id = tipoProduccionDao.Insertar(entidad);
+            entidad = tipoProduccionDao.Insert(entidad);
+            id = entidad.getNIdTipoProduccion();
+                    
         }
         catch(Exception ex){
             
@@ -48,7 +54,7 @@ public class TipoProduccionBusinessImp implements ITipoProduccionBusiness {
     public boolean Delete(SRITipoProduccion entidad) {
         boolean respuesta = false;
          try{
-            tipoProduccionDao.Delete(entidad.getNIdTipoProduccion());
+            tipoProduccionDao.Delete(entidad);
             respuesta = true;
         }
         catch(Exception ex){
@@ -61,7 +67,7 @@ public class TipoProduccionBusinessImp implements ITipoProduccionBusiness {
     public SRITipoProduccion Get(int idEntidad) {
         SRITipoProduccion respuesta = null;
          try{
-            respuesta = tipoProduccionDao.Get(idEntidad);
+            respuesta = tipoProduccionDao.GetById(idEntidad);
         }
         catch(Exception ex){
         }
@@ -70,6 +76,7 @@ public class TipoProduccionBusinessImp implements ITipoProduccionBusiness {
 
     @Override
     public List<SRITipoProduccion> GetAll() {
+        log.info("PRUEBAAAA LOGGGG");
          List<SRITipoProduccion> respuesta = null;
          try{
             respuesta = tipoProduccionDao.GetAll();
