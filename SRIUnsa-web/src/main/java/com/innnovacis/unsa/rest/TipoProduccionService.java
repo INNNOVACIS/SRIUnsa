@@ -40,6 +40,15 @@ public class TipoProduccionService {
         return tipoProduccionBusiness.GetAll();
     }
     
+    
+    @GET
+    @Path("/getByIdTipoProduccion")
+    @Produces(MediaType.APPLICATION_JSON)
+    public SRITipoProduccion getByIdTipoProduccion(@PathParam("IdTipoProduccion") int IdTipoProduccion) {
+        
+        return tipoProduccionBusiness.Get(IdTipoProduccion);
+    }
+    
     @POST
     @Path("/insertTipoProduccion")
     @Produces(MediaType.APPLICATION_JSON)
@@ -65,14 +74,7 @@ public class TipoProduccionService {
         return tipoProduccionBusiness.Delete(tipoProduccion);
     }
     
-    @POST
-    @Path("/getByIdTipoProduccion")
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public SRITipoProduccion getByIdTipoProduccion(int IdTipoProduccion) {
-        
-        return tipoProduccionBusiness.Get(IdTipoProduccion);
-    }
+  
     
   
     
