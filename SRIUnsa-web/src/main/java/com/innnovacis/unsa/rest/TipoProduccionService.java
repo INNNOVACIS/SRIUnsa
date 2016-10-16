@@ -69,7 +69,7 @@ public class TipoProduccionService {
     @Path("/getByIdTipoProduccion")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public SRITipoProduccion getByIdTipoProduccion(@FormParam("IdTipoProduccion") int IdTipoProduccion) {
+    public SRITipoProduccion getByIdTipoProduccion(int IdTipoProduccion) {
         
         return tipoProduccionBusiness.Get(IdTipoProduccion);
     }
