@@ -5,8 +5,8 @@
  */
 package com.innnovacis.unsa.rest;
 
-import com.innnovacis.unsa.borrar.UsuarioRepository;
-import com.innnovacis.unsa.modelborrar.Usuario;
+import com.innnovacis.unsa.business.IUsuarioBusiness;
+import com.innnovacis.unsa.model.SRIUsuario;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -27,44 +27,48 @@ import javax.ws.rs.core.MediaType;
 public class UsuarioRestServices {
 
     @Inject
-    private UsuarioRepository usuarioRepository;
+    private IUsuarioBusiness usuarioBusiness;
     
     @GET
     @Path("/listarUsuarios")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<Usuario> getUsuarios() {
-        return usuarioRepository.getUsuario();
+    public List<SRIUsuario> getUsuarios() {
+        
+        return usuarioBusiness.getUsuario();
     }
     
     @POST
     @Path("/registrarUsuarios")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Usuario saveUsuario(Usuario usuario) {
-        return usuarioRepository.saveUsuario(usuario);
+    public SRIUsuario saveUsuario(SRIUsuario usuario) {
+        
+        return usuarioBusiness.saveUsuario(usuario);
     }
     
     @PUT
     @Path("/updateUsuarios")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Usuario updateUsuario(Usuario usuario) {
-        return usuarioRepository.updateUsuario(usuario);
+    public SRIUsuario updateUsuario(SRIUsuario usuario) {
+        
+        return usuarioBusiness.updateUsuario(usuario);
     }
     
     @POST
     @Path("/autenticarUsuarios")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Usuario autenticarUsuario(Usuario usuario) {
-        return usuarioRepository.autenticarUsuario(usuario);
+    public SRIUsuario autenticarUsuario(SRIUsuario usuario) {        
+        return usuarioBusiness.autenticarUsuario(usuario);
     }
     
     @PUT
     @Path("/deleteUsuarios")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Usuario deleteUsuario(Usuario usuario) {
-        return usuarioRepository.deleteUsuario(usuario);
+    public SRIUsuario deleteUsuario(SRIUsuario usuario) {
+        
+        return usuarioBusiness.deleteUsuario(usuario);
     }
 }
