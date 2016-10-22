@@ -13,7 +13,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
 import org.json.JSONObject;
 
 /**
@@ -29,7 +28,6 @@ public class ActividadRestService {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public String Filtro(String parametros) {
-        //Gson o = new Gson();
         
         HashMap<String, String> map = new HashMap<String, String>();
         JSONObject jObject = new JSONObject(parametros);
