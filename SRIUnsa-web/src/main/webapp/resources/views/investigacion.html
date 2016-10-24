@@ -10,46 +10,28 @@
               <div class="panel-body">
                   <form class="form-horizontal">
                   <div class="form-group">
-                    <label for="inpFacultad" class="control-label col-md-2">Tipo de Investigación</label>
+                    <label class="control-label col-md-2">Tipo de Investigación</label>
                     <div class="col-md-10">
-                      <select class="form-control" style="margin:2px;" ng-model="selected" ng-options="opt as opt for opt in actividadesInvestigacion" ng-init="selected=''" ng-change=actividadChange(selected)></select>
+                      <select class="form-control" style="margin:2px;" ng-model="actividad" ng-options="opt as opt.nombre for opt in actividadesInvestigacion" ng-init="selected=''" ng-change=actividadChange(actividad.nombre)></select>
                     </div>
-                    <label for="inpFacultad" class="control-label col-md-2">Facultad</label>
+                    <label class="control-label col-md-2">Facultad</label>
                     <div class="col-md-4">
-                      <select class="form-control" style="margin:2px;" id="inpFacultad">
-                          <option></option>
-                          <option>Facultad de Producción y Servicios</option>
-                          <option>Facultad de Procesos</option>
-                      </select>
+                      <select class="form-control" style="margin:2px;" ng-model="facultad" ng-options="opt as opt.nombre for opt in facultades" ng-init="selected=''" ng-change=actividadChange(facultad.nombre)></select>
                     </div>
-                    <label for="inpEscuela" class="control-label col-md-2">Escuela</label>
+                    <label class="control-label col-md-2">Escuela</label>
                     <div class="col-md-4">
-                      <select class="form-control" style="margin:2px;" id="inpEscuela">
-                          <option></option>
-                          <option>Escuela Profesional de Ingeniería de Sistemas</option>
-                          <option>Industrias Alimentarias</option>
-                          <option>Ingeniería Mecánica</option>
-                      </select>
+                      <select class="form-control" style="margin:2px;" ng-model="escuela" ng-options="opt as opt.nombre for opt in escuelas" ng-init="selected=''" ng-change=actividadChange(escuela.nombre)></select>
                     </div>
-                    <label for="inpSemestre" class="control-label col-md-2"> Semestre</label>
+                    <label class="control-label col-md-2"> Semestre</label>
                     <div class="col-md-4">
-                      <select class="form-control" style="margin:2px;" id="inpSemestre">
-                          <option></option>
-                          <option>2016-I Semestre I</option>
-                          <option>2016-II Semestre II</option>
-                          <option>2016-II Semestre III</option>
-                      </select>
+                      <select class="form-control" style="margin:2px;" ng-model="semestre" ng-options="opt as opt.nombre for opt in semestres" ng-init="selected=''" ng-change=actividadChange(semestre.nombre)></select>
                     </div>
-                    <label for="inpFondo" class="control-label col-md-2"> Fondo</label>
+                    <label class="control-label col-md-2"> Fondo</label>
                     <div class="col-md-4">
-                      <select class="form-control" style="margin:2px;" id="inpFondo">
-                          <option></option>
-                          <option>CONCYTEC</option>
-                          <option>FINCyT</option>
-                      </select>
+                      <select class="form-control" style="margin:2px;" ng-model="fondo" ng-options="opt as opt.nombre for opt in fondos" ng-init="selected=''" ng-change=actividadChange(fondo.nombre)></select>
                     </div>
                     <div class="col-md-12" style="margin-top:10px;">
-                      <a type="submit" class="col-md-offset-2 btn btn-primary" >
+                      <a class="col-md-offset-2 btn btn-primary" ng-click="filtrar()" >
                         <span class="glyphicon glyphicon-search" aria-hidden="true"> Filtrar</span>
                       </a>
                     </div>
@@ -73,29 +55,22 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Tratamiento sostenible y a bajo costo de agua con arsénico ...</td>
-                          <td>Producción Intelectual</td>
-                          <td>100 horas</td>
-                          <td>3</td>
-                          <td>
-                            <button ng-click="panelChange(2)" type="submit" class="btn-sm btn-info">Ver</button>
-                            <button ng-click="panelChange(3)" type="submit" class="btn-sm btn-warning ">Editar</button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Reanimador de Uso Fácil </td>
-                          <td>Investigaciones Básicas y Aplicadas</td>                          
-                          <td>80 horas</td>
-                          <td>1</td>
-                          <td>
-                            <button ng-click="panelChange(2)" type="submit" class="btn-sm btn-info ">Ver</button>
-                            <button data-toggle="modal" data-target="#modalEditar" type="submit" class="btn-sm btn-warning ">Editar</button>
-                          </td>
-                        </tr>
-                      </tbody>
+                        <tr ng-repeat="actividad in actividades">
+                            <td>{{ actividad.id }}</td>
+                            <td><strong>{{ actividad.nombreInvestigacion }}</strong></td>
+                            <td>{{ actividad.tipoInvestigacion.nombre }}</td>
+                            <td>{{ actividad.duracion }}</td>
+                            <td>{{ actividad.totalArchivos }}</td>
+                            <td nowrap>
+                                <button ng-click="panelChange(2)" type="submit" class="btn-sm btn-info btn-xs">
+                                    <span class="glyphicon glyphicon-ok"></span> Ver
+                                </button>
+                                <button ng-click="panelChange(3)" data-toggle="modal" data-target="#modalEditar" type="submit" class="btn-sm btn-warning btn-xs">
+                                    <span class="glyphicon glyphicon-pencil"></span> Editar
+                                </button>
+                              </td>
+                          </tr>
+                    </tbody>
                   </table>
                 </div>
               </div>

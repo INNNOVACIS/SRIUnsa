@@ -1,6 +1,58 @@
 investigacionApp.controller('homeController', function($log, $scope, $location, $rootScope, $filter, 
     HomeService, SharedService, FileUploader) {
-    // create a message to display in our view
+    
+    /*
+     * Parametros
+     */
+    $scope.usuario = {id : 1, nombre : "ali David", usuario:"admin", clave : "abcde12345", };
+
+    
+    $scope.tipoInvestigacion = {id : 0, nombre : ""};
+    $scope.nombreInvestigacion = "";
+    $scope.facultad = {id : 0, nombre : ""};
+    $scope.departamento = {id : 0, nombre : ""};
+    $scope.escuela = {id : 0, nombre : ""};
+    $scope.duracionInvestigacion = 0;
+    $scope.tipoInvestigador = {id : 0, nombre : ""};
+    $scope.fondo = {id : 0, nombre : ""};
+    $scope.asesoria = {id : 0, nombre : ""};
+    $scope.tipoProduccion = {id : 0, nombre : ""};
+    $scope.tipoLabor = {id : 0, nombre : ""};
+    $scope.descripcion = "";
+    $scope.colaborador = {id : 0, nombre : ""};
+        
+    /*********** Obj JSON ***********/
+    $scope.actividadInvestigacion = {};
+    
+    var registrarInvestigacionSuccess = function(response){
+        $log.debug(response);
+    };
+    
+    var registrarInvestigacionError = function(response){
+        $log.debug(response);
+    };
+    
+    $scope.registrarInvestigacion = function(){
+        $scope.actividadInvestigacion = {
+            idTipoInvestigacion : $scope.tipoInvestigacion.id,
+            nombreInvestigacion : $scope.nombreInvestigacion,
+            idFacultad : $scope.facultad.id,
+            idDepartamento : $scope.departamento.id,
+            idEscuela : $scope.escuela.id,
+            duracionInvestigacion : $scope.duracionInvestigacion,
+            idTipoInvestigador : $scope.tipoInvestigador.id,
+            idFondo : $scope.fondo.id,
+            asesoria : $scope.asesoria.id,
+            idTipoProduccion : $scope.tipoProduccion.id,
+            idTipoLabor : $scope.tipoLabor.id,
+            //administracionAreas : $scope.customer,
+            descripcion : $scope.descripcion,
+            colaborador : $scope.usuario
+        };
+        console.log("JSON :: ", $scope.actividadInvestigacion); 
+        
+        HomeService.registrarInvestigacion($scope.actividadInvestigacion).then(registrarInvestigacionSuccess, registrarInvestigacionError);        
+    };
 
     // START example DataPicker
     $scope.dt = new Date(2020, 5, 22);
@@ -23,13 +75,56 @@ investigacionApp.controller('homeController', function($log, $scope, $location, 
     $scope.actividad4_show = false;
 
     $scope.actividadesInvestigacion = [
-		'Investigación Formativa',
-		'Asesoria de Tesis',
-		'Investigaciones Básicas y Aplicadas',
-		'Producción Intelectual'
-	];
+        {id : 1, nombre : 'Investigación Formativa'},
+        {id : 2, nombre : 'Asesoria de Tesis'},
+        {id : 3, nombre : 'Investigaciones Básicas y Aplicadas'},
+        {id : 3, nombre : 'Producción Intelectual'}
+    ];
 
-	var areaList = [
+    $scope.facultades = [
+        {id : 1, nombre : 'Facultad de Producción y Servicios'},
+        {id : 2, nombre : 'Facultad de Procesos'},
+        {id : 3, nombre : 'Facultad de Ingenieria Civil'}
+    ];
+    $scope.departamentos = [
+        {id : 1, nombre : 'Departamento Académico FISICA'},
+        {id : 2, nombre : 'Departamento Académico QUÍMICA'},
+        {id : 3, nombre : 'Departamento Académico MATEMATICAS'}
+    ];
+    $scope.escuelas = [
+        {id : 1, nombre : 'Escuela Profesional de Ingeniería de Sistemas'},
+        {id : 2, nombre : 'Industrias Alimentarias'},
+        {id : 3, nombre : 'Ingeniería Mecánica'}
+    ];
+    $scope.semestres = [
+        {id : 1, nombre : '2016-I Semestre I'},
+        {id : 2, nombre : '2016-II Semestre II'},
+        {id : 3, nombre : '2016-II Semestre III'}        
+    ];
+    $scope.tipoInvestigadores = [
+        {id : 1, nombre : 'Principal'},
+        {id : 2, nombre : 'Co-Investigador'}
+    ];
+    $scope.fondos = [
+        {id : 1, nombre : 'CONCYTEC'},
+        {id : 2, nombre : 'FINCyT'}
+    ];
+    $scope.tipoAsesorias = [
+        {id : 1, nombre : 'Pre Grado'},
+        {id : 2, nombre : 'Post Grado'}
+    ];
+    $scope.tipoProducciones = [
+        {id : 1, nombre : 'Libro'},
+        {id : 2, nombre : 'Artículo'},
+        {id : 3, nombre : 'Ponencia Congreso Nacional'},
+        {id : 4, nombre : 'Ponencia Congreso Internacional'}
+    ];
+    $scope.tipoLabores = [
+        {id : 1, nombre : 'Lectiva'},
+        {id : 2, nombre : 'No Lectiva'}
+    ];
+
+    var areaList = [
         { "id": 1, "area": "Ciencias Agrícolas" },
         { "id": 2, "area": "Ciencias Médicas y de Salud" },
         { "id": 3, "area": "Ciencias Naturales" }
@@ -70,7 +165,7 @@ investigacionApp.controller('homeController', function($log, $scope, $location, 
         {"Id":20, "disciplina":"Acústica", "subAreaId": 9}
     ];
 
-	$scope.customer ={
+    $scope.customer ={
         Area:'', 
         SubArea:'', 
         Disciplina: ''
@@ -121,6 +216,8 @@ investigacionApp.controller('homeController', function($log, $scope, $location, 
 		}
     	console.log($scope.Actividad);
     }
+    
+    
 
     /********** FILE UPLOAD **********/  
 
@@ -144,7 +241,7 @@ investigacionApp.controller('homeController', function($log, $scope, $location, 
         console.log("FILE :: ", file);
         console.log("FD :: ", formData);
 
-        HomeService.sendFile(formData, true).then(homeServiceSuccess, homeServiceError); 
+        HomeService.sendFile(formData, true).then(homeServiceSuccess, homeServiceError);
     };
 
     var uploader = $scope.uploader = new FileUploader({
@@ -153,7 +250,7 @@ investigacionApp.controller('homeController', function($log, $scope, $location, 
 
         // FILTERS
 
-        uploader.filters.push({
+    uploader.filters.push({
             name: 'customFilter',
             fn: function(item /*{File|FileLikeObject}*/, options) {
                 return this.queue.length < 10;

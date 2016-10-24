@@ -14,7 +14,7 @@ investigacionApp.config(function($routeProvider){
 		templateUrl : 'resources/views/investigacion.html',
 		controller : 'investigacionController'
 	})
-	.when('/estadoActividades',{
+	.when('/actividadesRevisadas',{
 		templateUrl : 'resources/views/actividadesRevisadas.html',
 		controller : 'actividadesRevisadasController'
 	})

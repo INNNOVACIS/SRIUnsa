@@ -11,14 +11,11 @@ import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 /**
@@ -34,30 +31,21 @@ public class TipoProduccionService {
     
 
     @GET
-    @Path("/getListTipoProduccion")
+    @Path("/listarTipoProduccion")
     @Produces(MediaType.APPLICATION_JSON)
     public List<SRITipoProduccion> getListTipoProduccion() {
         return tipoProduccionBusiness.GetAll();
     }
     
-    
-    @GET
-    @Path("/getByIdTipoProduccion/{IdTipoProduccion}")
-    @Produces(MediaType.APPLICATION_JSON)
-    public SRITipoProduccion getByIdTipoProduccion(@PathParam("IdTipoProduccion")long IdTipoProduccion) {
-        
-        return tipoProduccionBusiness.Get((int)IdTipoProduccion);
-    }
-    
     @POST
-    @Path("/insertTipoProduccion")
+    @Path("/registrarTipoProduccion")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public int insertTipoProduccion(SRITipoProduccion tipoProduccion) {
+    public int saveTipoProduccion(SRITipoProduccion tipoProduccion) {
         return tipoProduccionBusiness.Insertar(tipoProduccion);
     }
     
-     @PUT
+    @PUT
     @Path("/updateTipoProduccion")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
@@ -73,10 +61,4 @@ public class TipoProduccionService {
     public boolean deleteTipoProduccion(SRITipoProduccion tipoProduccion) {
         return tipoProduccionBusiness.Delete(tipoProduccion);
     }
-    
-  
-    
-  
-    
-   
 }
