@@ -5,7 +5,7 @@
  */
 package com.innnovacis.unsa.business;
 
-import com.innnovacis.unsa.model.SRITipoProduccion;
+import com.innnovacis.unsa.model.SRISemestre;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 
@@ -14,11 +14,11 @@ import javax.enterprise.context.ApplicationScoped;
  * @author Gen-Tya-TIConsul1
  */
 @ApplicationScoped
-public interface ITipoProduccionBusiness {
-    int Insertar(SRITipoProduccion entidad);
-    boolean Update(SRITipoProduccion entidad);
-    boolean Delete(SRITipoProduccion entidad);
-    SRITipoProduccion Get(int idEntidad);
-    List<SRITipoProduccion> GetAll();
+public interface ISemestreBusiness {
+    int Insertar(SRISemestre entidad);
+    boolean Update(SRISemestre entidad);
+    boolean Delete(SRISemestre entidad);
+    SRISemestre Get(int idEntidad);
+    List<SRISemestre> GetAll();
 
 }

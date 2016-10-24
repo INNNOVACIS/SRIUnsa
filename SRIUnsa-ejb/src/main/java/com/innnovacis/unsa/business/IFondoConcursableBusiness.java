@@ -5,7 +5,8 @@
  */
 package com.innnovacis.unsa.business;
 
-import com.innnovacis.unsa.model.SRITipoProduccion;
+import com.innnovacis.unsa.model.SRIFondoConcursable;
+
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 
@@ -14,11 +15,11 @@ import javax.enterprise.context.ApplicationScoped;
  * @author Gen-Tya-TIConsul1
  */
 @ApplicationScoped
-public interface ITipoProduccionBusiness {
-    int Insertar(SRITipoProduccion entidad);
-    boolean Update(SRITipoProduccion entidad);
-    boolean Delete(SRITipoProduccion entidad);
-    SRITipoProduccion Get(int idEntidad);
-    List<SRITipoProduccion> GetAll();
+public interface IFondoConcursableBusiness {
+    int Insertar(SRIFondoConcursable entidad);
+    boolean Update(SRIFondoConcursable entidad);
+    boolean Delete(SRIFondoConcursable entidad);
+    SRIFondoConcursable Get(int idEntidad);
+    List<SRIFondoConcursable> GetAll();
 
 }
