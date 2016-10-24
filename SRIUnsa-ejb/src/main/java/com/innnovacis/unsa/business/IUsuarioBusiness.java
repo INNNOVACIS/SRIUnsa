@@ -16,10 +16,10 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public interface IUsuarioBusiness {
     
-    public List<SRIUsuario> getUsuario();
-    public SRIUsuario saveUsuario(SRIUsuario usuario);
-    public SRIUsuario updateUsuario(SRIUsuario usuario);
-    public SRIUsuario deleteUsuario(SRIUsuario usuario);
-    public SRIUsuario autenticarUsuario(SRIUsuario usuario);
+    int Insertar(SRIUsuario entidad);
+    boolean Update(SRIUsuario entidad);
+    boolean Delete(SRIUsuario entidad);
+    SRIUsuario Get(int idEntidad);
+    List<SRIUsuario> GetAll();
     
 }

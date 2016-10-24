@@ -6,7 +6,6 @@
 package com.innnovacis.unsa.dao;
 
 import com.innnovacis.unsa.model.SRIUsuario;
-import com.innnovacis.unsa.util.SRIUsuarioPaginacion;
 import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 
@@ -16,11 +15,9 @@ import javax.enterprise.context.ApplicationScoped;
  */
 @ApplicationScoped
 public interface IUsuarioDao {
-    
-    public List<SRIUsuario> getUsuario();
-    public SRIUsuarioPaginacion getUsuarios(SRIUsuarioPaginacion paginacion);
-    public SRIUsuario saveUsuario(SRIUsuario usuario);   
-    public SRIUsuario updateUsuario(SRIUsuario usuario);
-    public SRIUsuario deleteUsuario(SRIUsuario usuario);    
-    public SRIUsuario autenticarUsuario(SRIUsuario usuario);
+    SRIUsuario Insert(SRIUsuario entidad);
+    SRIUsuario Update(SRIUsuario entidad);
+    boolean Delete(SRIUsuario entidad);
+    SRIUsuario GetById(int idEntidad);
+    List<SRIUsuario> GetAll();  
 }

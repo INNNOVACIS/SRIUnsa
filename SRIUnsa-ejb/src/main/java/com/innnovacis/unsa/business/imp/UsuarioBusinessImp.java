@@ -1,86 +1,91 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.innnovacis.unsa.business.imp;
 
+
 import com.innnovacis.unsa.business.IUsuarioBusiness;
+
 import com.innnovacis.unsa.dao.IUsuarioDao;
 import com.innnovacis.unsa.model.SRIUsuario;
-import java.util.ArrayList;
-import java.util.List;
-import javax.enterprise.context.Dependent;
-import javax.inject.Inject;
 
-/**
- *
- * @author innnovacis
- */
+import javax.inject.Inject;
+import java.util.List;
+import java.util.logging.Logger;
+import javax.enterprise.context.Dependent;
+
+
+
 @Dependent
-public class UsuarioBusinessImp implements IUsuarioBusiness{
+public class UsuarioBusinessImp implements IUsuarioBusiness {
+
+    @Inject
+    private IUsuarioDao usuarioDao;
     
     @Inject
-    public IUsuarioDao usuarioDao;
-    
+    private Logger log;
+
     @Override
-    public List<SRIUsuario> getUsuario() {
-        
-        List<SRIUsuario> respuesta = new ArrayList<SRIUsuario>();
+    public int Insertar(SRIUsuario entidad) {
+        int id = -1;
         try{
-            respuesta = usuarioDao.getUsuario();
-        } catch(Exception e) {
-        
+            entidad = usuarioDao.Insert(entidad);
+            id = entidad.getNIdUsuario();
+                    
         }
-        return respuesta;
+        catch(Exception ex){
+            
+        }
+        return id;
     }
 
     @Override
-    public SRIUsuario saveUsuario(SRIUsuario usuario) {
-        
-        SRIUsuario respuesta = new SRIUsuario();
-        try{
-            respuesta = usuarioDao.saveUsuario(usuario);
-        } catch(Exception e) {
-        
+    public boolean Update(SRIUsuario entidad) {
+        boolean respuesta = false;
+         try{
+            usuarioDao.Update(entidad);
+            respuesta = true;
         }
-        return respuesta;
+        catch(Exception ex){
+            
+        }
+         return respuesta;
+        
     }
 
     @Override
-    public SRIUsuario updateUsuario(SRIUsuario usuario) {
-        
-        SRIUsuario respuesta = new SRIUsuario();
-        try{
-            respuesta = usuarioDao.updateUsuario(usuario);
-        } catch(Exception e) {
-        
+    public boolean Delete(SRIUsuario entidad) {
+        boolean respuesta = false;
+         try{
+            usuarioDao.Delete(entidad);
+            respuesta = true;
         }
-        return respuesta;
+        catch(Exception ex){
+            
+        }
+         return respuesta;
     }
 
     @Override
-    public SRIUsuario deleteUsuario(SRIUsuario usuario) {
-        
-        SRIUsuario respuesta = new SRIUsuario();
-        try{
-            respuesta = usuarioDao.deleteUsuario(usuario);
-        } catch(Exception e) {
-        
+    public SRIUsuario Get(int idEntidad) {
+        SRIUsuario respuesta = null;
+         try{
+            respuesta = usuarioDao.GetById(idEntidad);
         }
-        return respuesta;
+        catch(Exception ex){
+        }
+         return respuesta;
     }
 
     @Override
-    public SRIUsuario autenticarUsuario(SRIUsuario usuario) {
-        
-        SRIUsuario respuesta = new SRIUsuario();
-        try{
-            respuesta = usuarioDao.autenticarUsuario(usuario);
-        } catch(Exception e) {
-        
+    public List<SRIUsuario> GetAll() {
+        log.info("PRUEBAAAA LOGGGG");
+         List<SRIUsuario> respuesta = null;
+         try{
+            respuesta = usuarioDao.GetAll();
         }
-        return respuesta;
+        catch(Exception ex){
+        }
+         return respuesta;
     }
+
     
 }
