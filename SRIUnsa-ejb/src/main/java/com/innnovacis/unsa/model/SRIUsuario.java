@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package com.innnovacis.unsa.model;
 
 /*
