@@ -1,8 +1,7 @@
 
-package com.innnovacis.unsa.business.imp;
+package com.innnovacis.unsa.borrar;
 
-import com.innnovacis.unsa.business.IPersonaBusiness;
-import com.innnovacis.unsa.dao.IPersonaDao;
+import com.innnovacis.unsa.borrar.IPersonaDao;
 import com.innnovacis.unsa.modelborrar.Persona;
 import javax.inject.Inject;
 import java.util.List;

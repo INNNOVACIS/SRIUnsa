@@ -1,7 +1,7 @@
 
-package com.innnovacis.unsa.dao.imp;
+package com.innnovacis.unsa.borrar;
 
-import com.innnovacis.unsa.dao.IPersonaDao;
+import com.innnovacis.unsa.borrar.IPersonaDao;
 import com.innnovacis.unsa.modelborrar.Persona;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

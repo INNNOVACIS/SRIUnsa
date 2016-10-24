@@ -18,10 +18,10 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "usuarioflujo" )
+@Table(name = "planificacionactividad" )
 @NamedQueries({
-    @NamedQuery(name="SRIUsuarioFlujo.GetAll",query="SELECT p FROM SRIUsuarioFlujo p"),
-    @NamedQuery(name="SRIUsuarioFlujo.GetById",query="SELECT p FROM SRIUsuarioFlujo p WHERE p.NIdUsuarioFlujo = :idEntidad")
+    @NamedQuery(name="SRIPlanificacionActividad.GetAll",query="SELECT p FROM SRIPlanificacionActividad p"),
+    @NamedQuery(name="SRIPlanificacionActividad.GetById",query="SELECT p FROM SRIPlanificacionActividad p WHERE p.NIdUsuarioFlujo = :idEntidad")
 })
 public class SRIPlanificacionActividad  extends SRIEntidad implements Serializable  {
     

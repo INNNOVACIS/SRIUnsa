@@ -29,7 +29,7 @@ public class SRIUsuario  extends SRIEntidad implements Serializable  {
 
     @Id
     @GeneratedValue
-    @Column(name = "idrol" )
+    @Column(name = "idusuario" )
     private int NIdUsuario;
     
     @Column(name = "usuariologin")

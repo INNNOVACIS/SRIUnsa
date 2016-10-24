@@ -1,7 +1,7 @@
 
 package com.innnovacis.unsa.rest;
 
-import com.innnovacis.unsa.business.IPersonaBusiness;
+import com.innnovacis.unsa.borrar.IPersonaBusiness;
 
 import com.innnovacis.unsa.modelborrar.Persona;
 import com.innnovacis.unsa.service.RegistrarPersona;
