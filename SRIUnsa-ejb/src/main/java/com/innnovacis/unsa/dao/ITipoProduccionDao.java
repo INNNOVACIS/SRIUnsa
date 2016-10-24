@@ -15,11 +15,9 @@ import javax.enterprise.context.ApplicationScoped;
  */
 @ApplicationScoped
 public interface ITipoProduccionDao {
-    
     SRITipoProduccion Insert(SRITipoProduccion entidad);
     SRITipoProduccion Update(SRITipoProduccion entidad);
     boolean Delete(SRITipoProduccion entidad);
     SRITipoProduccion GetById(int idEntidad);
     List<SRITipoProduccion> GetAll();
-    
 }
