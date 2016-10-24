@@ -2,9 +2,11 @@
 package com.innnovacis.unsa.business.imp;
 
 
+import com.innnovacis.unsa.business.ISemestreBusiness;
 import com.innnovacis.unsa.business.ITipoNivelBusiness;
+import com.innnovacis.unsa.dao.ISemestreDao;
 import com.innnovacis.unsa.dao.ITipoNivelDao;
-import com.innnovacis.unsa.model.SRITipoNivel;
+import com.innnovacis.unsa.model.SRISemestre;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -14,20 +16,20 @@ import javax.enterprise.context.Dependent;
 
 
 @Dependent
-public class TipoNivelBusinessImp implements ITipoNivelBusiness {
+public class SemestreBusinessImp implements ISemestreBusiness {
 
     @Inject
-    private ITipoNivelDao tipoNivelDao;
+    private ISemestreDao semestreDao;
     
     @Inject
     private Logger log;
 
     @Override
-    public int Insertar(SRITipoNivel entidad) {
+    public int Insertar(SRISemestre entidad) {
         int id = -1;
         try{
-            entidad = tipoNivelDao.Insert(entidad);
-            id = entidad.getNIdTipoNivel();
+            entidad = semestreDao.Insert(entidad);
+            id = entidad.getNIdSemestre();
                     
         }
         catch(Exception ex){
@@ -37,10 +39,10 @@ public class TipoNivelBusinessImp implements ITipoNivelBusiness {
     }
 
     @Override
-    public boolean Update(SRITipoNivel entidad) {
+    public boolean Update(SRISemestre entidad) {
         boolean respuesta = false;
          try{
-            tipoNivelDao.Update(entidad);
+            semestreDao.Update(entidad);
             respuesta = true;
         }
         catch(Exception ex){
@@ -51,10 +53,10 @@ public class TipoNivelBusinessImp implements ITipoNivelBusiness {
     }
 
     @Override
-    public boolean Delete(SRITipoNivel entidad) {
+    public boolean Delete(SRISemestre entidad) {
         boolean respuesta = false;
          try{
-            tipoNivelDao.Delete(entidad);
+            semestreDao.Delete(entidad);
             respuesta = true;
         }
         catch(Exception ex){
@@ -64,10 +66,10 @@ public class TipoNivelBusinessImp implements ITipoNivelBusiness {
     }
 
     @Override
-    public SRITipoNivel Get(int idEntidad) {
-        SRITipoNivel respuesta = null;
+    public SRISemestre Get(int idEntidad) {
+        SRISemestre respuesta = null;
          try{
-            respuesta = tipoNivelDao.GetById(idEntidad);
+            respuesta = semestreDao.GetById(idEntidad);
         }
         catch(Exception ex){
         }
@@ -75,10 +77,11 @@ public class TipoNivelBusinessImp implements ITipoNivelBusiness {
     }
 
     @Override
-    public List<SRITipoNivel> GetAll() {
-         List<SRITipoNivel> respuesta = null;
+    public List<SRISemestre> GetAll() {
+
+         List<SRISemestre> respuesta = null;
          try{
-            respuesta = tipoNivelDao.GetAll();
+            respuesta = semestreDao.GetAll();
         }
         catch(Exception ex){
         }

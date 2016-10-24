@@ -2,9 +2,10 @@
 package com.innnovacis.unsa.business.imp;
 
 
-import com.innnovacis.unsa.business.ITipoNivelBusiness;
-import com.innnovacis.unsa.dao.ITipoNivelDao;
-import com.innnovacis.unsa.model.SRITipoNivel;
+import com.innnovacis.unsa.business.IEstructuraOrganizacionBusiness;
+import com.innnovacis.unsa.dao.IEstructuraOrganizacionDao;
+
+import com.innnovacis.unsa.model.SRIEstructuraOrganizacion;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -14,19 +15,19 @@ import javax.enterprise.context.Dependent;
 
 
 @Dependent
-public class TipoNivelBusinessImp implements ITipoNivelBusiness {
+public class EstructuraOrganizacionBusinessImp implements IEstructuraOrganizacionBusiness {
 
     @Inject
-    private ITipoNivelDao tipoNivelDao;
+    private IEstructuraOrganizacionDao estructuraOrganizacionDao;
     
     @Inject
     private Logger log;
 
     @Override
-    public int Insertar(SRITipoNivel entidad) {
+    public int Insertar(SRIEstructuraOrganizacion entidad) {
         int id = -1;
         try{
-            entidad = tipoNivelDao.Insert(entidad);
+            entidad = estructuraOrganizacionDao.Insert(entidad);
             id = entidad.getNIdTipoNivel();
                     
         }
@@ -37,10 +38,10 @@ public class TipoNivelBusinessImp implements ITipoNivelBusiness {
     }
 
     @Override
-    public boolean Update(SRITipoNivel entidad) {
+    public boolean Update(SRIEstructuraOrganizacion entidad) {
         boolean respuesta = false;
          try{
-            tipoNivelDao.Update(entidad);
+            estructuraOrganizacionDao.Update(entidad);
             respuesta = true;
         }
         catch(Exception ex){
@@ -51,10 +52,10 @@ public class TipoNivelBusinessImp implements ITipoNivelBusiness {
     }
 
     @Override
-    public boolean Delete(SRITipoNivel entidad) {
+    public boolean Delete(SRIEstructuraOrganizacion entidad) {
         boolean respuesta = false;
          try{
-            tipoNivelDao.Delete(entidad);
+            estructuraOrganizacionDao.Delete(entidad);
             respuesta = true;
         }
         catch(Exception ex){
@@ -64,10 +65,10 @@ public class TipoNivelBusinessImp implements ITipoNivelBusiness {
     }
 
     @Override
-    public SRITipoNivel Get(int idEntidad) {
-        SRITipoNivel respuesta = null;
+    public SRIEstructuraOrganizacion Get(int idEntidad) {
+        SRIEstructuraOrganizacion respuesta = null;
          try{
-            respuesta = tipoNivelDao.GetById(idEntidad);
+            respuesta = estructuraOrganizacionDao.GetById(idEntidad);
         }
         catch(Exception ex){
         }
@@ -75,10 +76,11 @@ public class TipoNivelBusinessImp implements ITipoNivelBusiness {
     }
 
     @Override
-    public List<SRITipoNivel> GetAll() {
-         List<SRITipoNivel> respuesta = null;
+    public List<SRIEstructuraOrganizacion> GetAll() {
+ 
+         List<SRIEstructuraOrganizacion> respuesta = null;
          try{
-            respuesta = tipoNivelDao.GetAll();
+            respuesta = estructuraOrganizacionDao.GetAll();
         }
         catch(Exception ex){
         }

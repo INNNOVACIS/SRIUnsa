@@ -2,9 +2,9 @@
 package com.innnovacis.unsa.business.imp;
 
 
-import com.innnovacis.unsa.business.ITipoNivelBusiness;
-import com.innnovacis.unsa.dao.ITipoNivelDao;
-import com.innnovacis.unsa.model.SRITipoNivel;
+import com.innnovacis.unsa.business.IFondoConcursableBusiness;
+import com.innnovacis.unsa.dao.IFondoConcursableDao;
+import com.innnovacis.unsa.model.SRIFondoConcursable;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -14,20 +14,20 @@ import javax.enterprise.context.Dependent;
 
 
 @Dependent
-public class TipoNivelBusinessImp implements ITipoNivelBusiness {
+public class FondoConcursableBusinessImp implements IFondoConcursableBusiness {
 
     @Inject
-    private ITipoNivelDao tipoNivelDao;
+    private IFondoConcursableDao fondoConcursableDao;
     
     @Inject
     private Logger log;
 
     @Override
-    public int Insertar(SRITipoNivel entidad) {
+    public int Insertar(SRIFondoConcursable entidad) {
         int id = -1;
         try{
-            entidad = tipoNivelDao.Insert(entidad);
-            id = entidad.getNIdTipoNivel();
+            entidad = fondoConcursableDao.Insert(entidad);
+            id = entidad.getNIdFondoConcursable();
                     
         }
         catch(Exception ex){
@@ -37,10 +37,10 @@ public class TipoNivelBusinessImp implements ITipoNivelBusiness {
     }
 
     @Override
-    public boolean Update(SRITipoNivel entidad) {
+    public boolean Update(SRIFondoConcursable entidad) {
         boolean respuesta = false;
          try{
-            tipoNivelDao.Update(entidad);
+            fondoConcursableDao.Update(entidad);
             respuesta = true;
         }
         catch(Exception ex){
@@ -51,10 +51,10 @@ public class TipoNivelBusinessImp implements ITipoNivelBusiness {
     }
 
     @Override
-    public boolean Delete(SRITipoNivel entidad) {
+    public boolean Delete(SRIFondoConcursable entidad) {
         boolean respuesta = false;
          try{
-            tipoNivelDao.Delete(entidad);
+            fondoConcursableDao.Delete(entidad);
             respuesta = true;
         }
         catch(Exception ex){
@@ -64,10 +64,10 @@ public class TipoNivelBusinessImp implements ITipoNivelBusiness {
     }
 
     @Override
-    public SRITipoNivel Get(int idEntidad) {
-        SRITipoNivel respuesta = null;
+    public SRIFondoConcursable Get(int idEntidad) {
+        SRIFondoConcursable respuesta = null;
          try{
-            respuesta = tipoNivelDao.GetById(idEntidad);
+            respuesta = fondoConcursableDao.GetById(idEntidad);
         }
         catch(Exception ex){
         }
@@ -75,10 +75,11 @@ public class TipoNivelBusinessImp implements ITipoNivelBusiness {
     }
 
     @Override
-    public List<SRITipoNivel> GetAll() {
-         List<SRITipoNivel> respuesta = null;
+    public List<SRIFondoConcursable> GetAll() {
+        log.info("PRUEBAAAA LOGGGG");
+         List<SRIFondoConcursable> respuesta = null;
          try{
-            respuesta = tipoNivelDao.GetAll();
+            respuesta = fondoConcursableDao.GetAll();
         }
         catch(Exception ex){
         }
