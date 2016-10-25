@@ -34,25 +34,25 @@ public class UsuarioRestServices {
     @Produces(MediaType.APPLICATION_JSON)
     public List<SRIUsuario> getUsuarios() {
         
-        return usuarioBusiness.getUsuario();
+        return usuarioBusiness.GetAll();
     }
     
     @POST
     @Path("/registrarUsuarios")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public SRIUsuario saveUsuario(SRIUsuario usuario) {
+    public int saveUsuario(SRIUsuario usuario) {
         
-        return usuarioBusiness.saveUsuario(usuario);
+        return usuarioBusiness.Insertar(usuario);
     }
     
     @PUT
     @Path("/updateUsuarios")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public SRIUsuario updateUsuario(SRIUsuario usuario) {
+    public boolean updateUsuario(SRIUsuario usuario) {
         
-        return usuarioBusiness.updateUsuario(usuario);
+        return usuarioBusiness.Update(usuario);
     }
     
     @POST
@@ -60,7 +60,8 @@ public class UsuarioRestServices {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public SRIUsuario autenticarUsuario(SRIUsuario usuario) {        
-        return usuarioBusiness.autenticarUsuario(usuario);
+        usuarioBusiness.Insertar(usuario);
+        return usuario;
     }
     
     @PUT
@@ -69,6 +70,7 @@ public class UsuarioRestServices {
     @Consumes(MediaType.APPLICATION_JSON)
     public SRIUsuario deleteUsuario(SRIUsuario usuario) {
         
-        return usuarioBusiness.deleteUsuario(usuario);
+        usuarioBusiness.Delete(usuario);
+        return usuario;
     }
 }
