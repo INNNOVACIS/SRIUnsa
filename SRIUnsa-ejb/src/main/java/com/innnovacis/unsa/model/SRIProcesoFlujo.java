@@ -21,27 +21,32 @@ import javax.persistence.Table;
 @Table(name = "procesoflujo" )
 @NamedQueries({
     @NamedQuery(name="SRIProcesoFlujo.GetAll",query="SELECT p FROM SRIProcesoFlujo p"),
-    @NamedQuery(name="SRIProcesoFlujo.GetById",query="SELECT p FROM SRIProcesoFlujo p WHERE p.NIdUsuarioFlujo = :idEntidad")
+    @NamedQuery(name="SRIProcesoFlujo.GetById",query="SELECT p FROM SRIProcesoFlujo p WHERE p.NIdProcesoFlujo = :idEntidad")
 })
 public class SRIProcesoFlujo  extends SRIEntidad implements Serializable  {
     
 
     @Id
     @GeneratedValue
-    @Column(name = "idusuarioflujo" )
+    @Column(name = "idprocesoflujo" )
+    private int NIdProcesoFlujo;
+
+
+    @Column(name = "idusuarioflujo")
     private int NIdUsuarioFlujo;
-    
-
-    @Column(name = "idarista")
-    private int NIdArista;
 
     
-    @Column(name = "idusuario")
-    private int NIdUsuario;
-
+    @Column(name = "flujo")
+    private String SFlujo;
     
+    
+    public int getNIdProcesoFlujo() {
+        return NIdProcesoFlujo;
+    }
 
-
+    public void setNIdProcesoFlujo(int NIdProcesoFlujo) {
+        this.NIdProcesoFlujo = NIdProcesoFlujo;
+    }
 
     public int getNIdUsuarioFlujo() {
         return NIdUsuarioFlujo;
@@ -51,21 +56,19 @@ public class SRIProcesoFlujo  extends SRIEntidad implements Serializable  {
         this.NIdUsuarioFlujo = NIdUsuarioFlujo;
     }
 
-    public int getNIdArista() {
-        return NIdArista;
+    public String getSFlujo() {
+        return SFlujo;
     }
 
-    public void setNIdArista(int NIdArista) {
-        this.NIdArista = NIdArista;
+    public void setSFlujo(String SFlujo) {
+        this.SFlujo = SFlujo;
     }
+    
 
-    public int getNIdUsuario() {
-        return NIdUsuario;
-    }
+    
 
-    public void setNIdUsuario(int NIdUsuario) {
-        this.NIdUsuario = NIdUsuario;
-    }
+
+
 
 
 

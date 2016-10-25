@@ -40,11 +40,11 @@ public class SRIPlanificacionActividad  extends SRIEntidad implements Serializab
 
     
 
-    public int getNIdPlanificacion() {
+    public int getNIdPlanificacionActidad() {
         return NIdPlanificacionActividad;
     }
 
-    public void setNIdPlanificacion(int NIdPlanificacionActividad) {
+    public void setNIdPlanificacionActividad(int NIdPlanificacionActividad) {
         this.NIdPlanificacionActividad = NIdPlanificacionActividad;
     }
 

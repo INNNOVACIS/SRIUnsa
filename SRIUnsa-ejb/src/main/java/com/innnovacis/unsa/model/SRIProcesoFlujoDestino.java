@@ -21,27 +21,43 @@ import javax.persistence.Table;
 @Table(name = "procesoflujodestino" )
 @NamedQueries({
     @NamedQuery(name="SRIProcesoFlujoDestino.GetAll",query="SELECT p FROM SRIProcesoFlujoDestino p"),
-    @NamedQuery(name="SRIProcesoFlujoDestino.GetById",query="SELECT p FROM SRIProcesoFlujoDestino p WHERE p.NIdUsuarioFlujo = :idEntidad")
+    @NamedQuery(name="SRIProcesoFlujoDestino.GetById",query="SELECT p FROM SRIProcesoFlujoDestino p WHERE p.NIdProcesoFlujoDestino = :idEntidad")
 })
 public class SRIProcesoFlujoDestino  extends SRIEntidad implements Serializable  {
     
 
     @Id
     @GeneratedValue
-    @Column(name = "idusuarioflujo" )
+    @Column(name = "idprocesoflujodestino" )
+    private int NIdProcesoFlujoDestino;
+
+    
+    @Column(name = "idprocesoflujo")
+    private int NIdProcesoFlujo;
+
+    
+    @Column(name = "idusurioflujo")
     private int NIdUsuarioFlujo;
-    
 
-    @Column(name = "idarista")
-    private int NIdArista;
-
-    
-    @Column(name = "idusuario")
-    private int NIdUsuario;
+    @Column(name = "estadoenvio")
+    private String SEstadoEnvio;
 
     
+    public int getNIdProcesoFlujoDestino() {
+        return NIdProcesoFlujoDestino;
+    }
 
+    public void setNIdProcesoFlujoDestino(int NIdProcesoFlujoDestino) {
+        this.NIdProcesoFlujoDestino = NIdProcesoFlujoDestino;
+    }
 
+    public int getNIdProcesoFlujo() {
+        return NIdProcesoFlujo;
+    }
+
+    public void setNIdProcesoFlujo(int NIdProcesoFlujo) {
+        this.NIdProcesoFlujo = NIdProcesoFlujo;
+    }
 
     public int getNIdUsuarioFlujo() {
         return NIdUsuarioFlujo;
@@ -51,21 +67,16 @@ public class SRIProcesoFlujoDestino  extends SRIEntidad implements Serializable 
         this.NIdUsuarioFlujo = NIdUsuarioFlujo;
     }
 
-    public int getNIdArista() {
-        return NIdArista;
+    public String getSEstadoEnvio() {
+        return SEstadoEnvio;
     }
 
-    public void setNIdArista(int NIdArista) {
-        this.NIdArista = NIdArista;
+    public void setSEstadoEnvio(String SEstadoEnvio) {
+        this.SEstadoEnvio = SEstadoEnvio;
     }
+    
 
-    public int getNIdUsuario() {
-        return NIdUsuario;
-    }
 
-    public void setNIdUsuario(int NIdUsuario) {
-        this.NIdUsuario = NIdUsuario;
-    }
 
 
 
