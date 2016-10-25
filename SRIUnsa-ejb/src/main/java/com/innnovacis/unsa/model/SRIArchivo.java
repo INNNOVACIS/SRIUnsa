@@ -7,6 +7,7 @@ package com.innnovacis.unsa.model;
  */
 
 import java.io.Serializable;
+import java.sql.Blob;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,54 +19,65 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "usuarioflujo" )
+@Table(name = "archivo" )
 @NamedQueries({
     @NamedQuery(name="SRIArchivo.GetAll",query="SELECT p FROM SRIArchivo p"),
-    @NamedQuery(name="SRIArchivo.GetById",query="SELECT p FROM SRIArchivo p WHERE p.NIdUsuarioFlujo = :idEntidad")
+    @NamedQuery(name="SRIArchivo.GetById",query="SELECT p FROM SRIArchivo p WHERE p.NIdArchivo = :idEntidad")
 })
 public class SRIArchivo  extends SRIEntidad implements Serializable  {
     
 
     @Id
     @GeneratedValue
-    @Column(name = "idusuarioflujo" )
-    private int NIdUsuarioFlujo;
+    @Column(name = "idarchivo" )
+    private int NIdArchivo;
     
-
-    @Column(name = "idarista")
-    private int NIdArista;
-
     
-    @Column(name = "idusuario")
-    private int NIdUsuario;
+    @Column(name = "idplanificacion")
+    private int NIdPlanificacion;
 
     
+    @Column(name = "nombrearchivo")
+    private String SNombreArchivo;
 
+    
+    @Column(name = "archivo")
+    private Blob BlobArchivo;
 
-
-    public int getNIdUsuarioFlujo() {
-        return NIdUsuarioFlujo;
+    public int getNIdArchivo() {
+        return NIdArchivo;
     }
 
-    public void setNIdUsuarioFlujo(int NIdUsuarioFlujo) {
-        this.NIdUsuarioFlujo = NIdUsuarioFlujo;
+    public void setNIdArchivo(int NIdArchivo) {
+        this.NIdArchivo = NIdArchivo;
     }
 
-    public int getNIdArista() {
-        return NIdArista;
+    public int getNIdPlanificacion() {
+        return NIdPlanificacion;
     }
 
-    public void setNIdArista(int NIdArista) {
-        this.NIdArista = NIdArista;
+    public void setNIdPlanificacion(int NIdPlanificacion) {
+        this.NIdPlanificacion = NIdPlanificacion;
     }
 
-    public int getNIdUsuario() {
-        return NIdUsuario;
+    public String getSNombreArchivo() {
+        return SNombreArchivo;
     }
 
-    public void setNIdUsuario(int NIdUsuario) {
-        this.NIdUsuario = NIdUsuario;
+    public void setSNombreArchivo(String SNombreArchivo) {
+        this.SNombreArchivo = SNombreArchivo;
     }
+
+    public Blob getBlobArchivo() {
+        return BlobArchivo;
+    }
+
+    public void setBlobArchivo(Blob BlobArchivo) {
+        this.BlobArchivo = BlobArchivo;
+    }
+    
+
+
 
 
 

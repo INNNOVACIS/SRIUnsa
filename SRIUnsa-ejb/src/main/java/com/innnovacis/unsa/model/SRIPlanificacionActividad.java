@@ -21,51 +21,49 @@ import javax.persistence.Table;
 @Table(name = "planificacionactividad" )
 @NamedQueries({
     @NamedQuery(name="SRIPlanificacionActividad.GetAll",query="SELECT p FROM SRIPlanificacionActividad p"),
-    @NamedQuery(name="SRIPlanificacionActividad.GetById",query="SELECT p FROM SRIPlanificacionActividad p WHERE p.NIdUsuarioFlujo = :idEntidad")
+    @NamedQuery(name="SRIPlanificacionActividad.GetById",query="SELECT p FROM SRIPlanificacionActividad p WHERE p.NIdPlanificacionActividad = :idEntidad")
 })
 public class SRIPlanificacionActividad  extends SRIEntidad implements Serializable  {
     
 
     @Id
     @GeneratedValue
-    @Column(name = "idusuarioflujo" )
-    private int NIdUsuarioFlujo;
-    
+    @Column(name = "idplanificacionactividad" )
+    private int NIdPlanificacionActividad;
 
-    @Column(name = "idarista")
-    private int NIdArista;
-
-    
-    @Column(name = "idusuario")
-    private int NIdUsuario;
+    @Column(name = "idinvestigacion")
+    private int NIdInvestigacion;
 
     
+    @Column(name = "horasparciales")
+    private int NHorasParciales;
 
+    
 
-
-    public int getNIdUsuarioFlujo() {
-        return NIdUsuarioFlujo;
+    public int getNIdPlanificacion() {
+        return NIdPlanificacionActividad;
     }
 
-    public void setNIdUsuarioFlujo(int NIdUsuarioFlujo) {
-        this.NIdUsuarioFlujo = NIdUsuarioFlujo;
+    public void setNIdPlanificacion(int NIdPlanificacionActividad) {
+        this.NIdPlanificacionActividad = NIdPlanificacionActividad;
     }
 
-    public int getNIdArista() {
-        return NIdArista;
+    public int getNIdInvestigacion() {
+        return NIdInvestigacion;
     }
 
-    public void setNIdArista(int NIdArista) {
-        this.NIdArista = NIdArista;
+    public void setNIdInvestigacion(int NIdInvestigacion) {
+        this.NIdInvestigacion = NIdInvestigacion;
     }
 
-    public int getNIdUsuario() {
-        return NIdUsuario;
+    public int getNHorasParciales() {
+        return NHorasParciales;
     }
 
-    public void setNIdUsuario(int NIdUsuario) {
-        this.NIdUsuario = NIdUsuario;
+    public void setNHorasParciales(int NHorasParciales) {
+        this.NHorasParciales = NHorasParciales;
     }
+    
 
 
 
