@@ -36,7 +36,7 @@ public class HelloWorldService {
     @Produces(MediaType.APPLICATION_JSON)
     public List<Persona> helloWorld() {
         return personaBusiness.findAll();
-        /*CREA POST TAMBIEN Y QUE RECIBA PARAMETROS*/
+        /*CREA POST TAMBIEN Y QUE RECIBA PARAMETROS yo borre ese registrar investigacion porque sale ese error*/
     }
     
     @POST
