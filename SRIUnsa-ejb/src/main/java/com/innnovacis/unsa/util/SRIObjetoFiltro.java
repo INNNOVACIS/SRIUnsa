@@ -12,13 +12,20 @@ import java.util.List;
  *
  * @author innnovacis
  */
-public class SRIUsuarioPaginacion {
+public class SRIObjetoFiltro {
     
     private int numeroPagina;
     private int rangoPagina;
-    private int totalPagina;
-    private List<SRIUsuario> data;
+    private String parametro;
 
+    public String getParametro() {
+        return parametro;
+    }
+
+    public void setParametro(String parametro) {
+        this.parametro = parametro;
+    }
+   
     public int getNumeroPagina() {
         return numeroPagina;
     }
@@ -35,19 +42,7 @@ public class SRIUsuarioPaginacion {
         this.rangoPagina = rangoPagina;
     }
 
-    public int getTotalPagina() {
-        return totalPagina;
-    }
+   
 
-    public void setTotalPagina(int totalPagina) {
-        this.totalPagina = totalPagina;
-    }
-
-    public List<SRIUsuario> getData() {
-        return data;
-    }
-
-    public void setData(List<SRIUsuario> data) {
-        this.data = data;
-    }
+   
 }

@@ -31,8 +31,8 @@ public class SRIPlanificacionActividad  extends SRIEntidad implements Serializab
     @Column(name = "idplanificacionactividad" )
     private int NIdPlanificacionActividad;
 
-    @Column(name = "idinvestigacion")
-    private int NIdInvestigacion;
+    @Column(name = "idactividadinvestigacion")
+    private int NIdActividadInvestigacion;
 
     
     @Column(name = "horasparciales")
@@ -48,12 +48,12 @@ public class SRIPlanificacionActividad  extends SRIEntidad implements Serializab
         this.NIdPlanificacionActividad = NIdPlanificacionActividad;
     }
 
-    public int getNIdInvestigacion() {
-        return NIdInvestigacion;
+    public int getNIdActividadInvestigacion() {
+        return NIdActividadInvestigacion;
     }
 
-    public void setNIdInvestigacion(int NIdInvestigacion) {
-        this.NIdInvestigacion = NIdInvestigacion;
+    public void setNIdActividadInvestigacion(int NIdActividadInvestigacion) {
+        this.NIdActividadInvestigacion = NIdActividadInvestigacion;
     }
 
     public int getNHorasParciales() {
