@@ -36,8 +36,8 @@ public class SRIDetalleInvestigacionFlujo  extends SRIEntidad implements Seriali
     private int NIdProcesoFlujo;
 
     
-    @Column(name = "idinvestigacion")
-    private int NIdInvestigacion;
+    @Column(name = "idactividadinvestigacion")
+    private int NIdActividadInvestigacion;
 
 
     public int getNIdDetalleInvestigacionFlujo() {
@@ -56,26 +56,13 @@ public class SRIDetalleInvestigacionFlujo  extends SRIEntidad implements Seriali
         this.NIdProcesoFlujo = NIdProcesoFlujo;
     }
 
-    public int getNIdInvestigacion() {
-        return NIdInvestigacion;
+    public int getNIdActividadInvestigacion() {
+        return NIdActividadInvestigacion;
     }
 
-    public void setNIdInvestigacion(int NIdInvestigacion) {
-        this.NIdInvestigacion = NIdInvestigacion;
+    public void setNIdActividadInvestigacion(int NIdActividadInvestigacion) {
+        this.NIdActividadInvestigacion = NIdActividadInvestigacion;
     }
-    
-
-    
-
-
-
-
-
-
-
-    
-
-    
     
 
 }
