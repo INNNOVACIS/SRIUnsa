@@ -7,7 +7,9 @@ package com.innnovacis.unsa.rest;
 
 import com.innnovacis.unsa.business.ITipoProduccionBusiness;
 import com.innnovacis.unsa.model.SRITipoProduccion;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -17,6 +19,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -33,8 +36,21 @@ public class TipoProduccionService {
     @GET
     @Path("/listarTipoProduccion")
     @Produces(MediaType.APPLICATION_JSON)
-    public List<SRITipoProduccion> getListTipoProduccion() {
-        return tipoProduccionBusiness.GetAll();
+    public Response getListTipoProduccion() {
+        Response.ResponseBuilder builder = null;
+        try{
+         List<SRITipoProduccion> olistaObjetos = tipoProduccionBusiness.GetAll();
+         Map<String, Object> respuesta = new HashMap<>();
+         respuesta.put("Result", "OK");
+         respuesta.put("Records", olistaObjetos);
+         builder = Response.status(Response.Status.OK).entity(respuesta);
+        }
+        catch(Exception ex){
+            Map<String, String> responseObj = new HashMap<>();
+            responseObj.put("error", ex.getMessage());
+            builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
+        }
+        return builder.build();
     }
     
     @POST

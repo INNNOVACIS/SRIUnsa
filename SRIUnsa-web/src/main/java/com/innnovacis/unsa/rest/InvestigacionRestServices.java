@@ -5,8 +5,6 @@
  */
 package com.innnovacis.unsa.rest;
 
-import com.innnovacis.unsa.model.SRIUsuario;
-import com.innnovacis.unsa.util.SRIRegistrarInvestigacion;
 import javax.ejb.Stateless;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -27,8 +25,8 @@ public class InvestigacionRestServices {
     @Path("/registrarInvestigacion")
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public SRIRegistrarInvestigacion registrarInvestigacion(SRIRegistrarInvestigacion objInvestigacion) {
-        System.out.println("registro =====> " + objInvestigacion);
-        return new SRIRegistrarInvestigacion();
+    public boolean registrarInvestigacion(String parametro) {
+        System.out.println("registro =====> " + parametro);
+        return true;
     }
 }
