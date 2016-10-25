@@ -21,51 +21,53 @@ import javax.persistence.Table;
 @Table(name = "usuarioflujo" )
 @NamedQueries({
     @NamedQuery(name="SRIDetalleInvestigacionFlujo.GetAll",query="SELECT p FROM SRIDetalleInvestigacionFlujo p"),
-    @NamedQuery(name="SRIDetalleInvestigacionFlujo.GetById",query="SELECT p FROM SRIDetalleInvestigacionFlujo p WHERE p.NIdUsuarioFlujo = :idEntidad")
+    @NamedQuery(name="SRIDetalleInvestigacionFlujo.GetById",query="SELECT p FROM NIdDetalleInvestigacionFlujo p WHERE p.NIdDetalleInvestigacionFlujo = :idEntidad")
 })
 public class SRIDetalleInvestigacionFlujo  extends SRIEntidad implements Serializable  {
     
 
     @Id
     @GeneratedValue
-    @Column(name = "idusuarioflujo" )
-    private int NIdUsuarioFlujo;
+    @Column(name = "iddetalleinvestigacionflujo" )
+    private int NIdDetalleInvestigacionFlujo;
     
-
-    @Column(name = "idarista")
-    private int NIdArista;
-
     
-    @Column(name = "idusuario")
-    private int NIdUsuario;
+    @Column(name = "idprocesoflujo")
+    private int NIdProcesoFlujo;
 
     
+    @Column(name = "idinvestigacion")
+    private int NIdInvestigacion;
 
 
-
-    public int getNIdUsuarioFlujo() {
-        return NIdUsuarioFlujo;
+    public int getNIdDetalleInvestigacionFlujo() {
+        return NIdDetalleInvestigacionFlujo;
     }
 
-    public void setNIdUsuarioFlujo(int NIdUsuarioFlujo) {
-        this.NIdUsuarioFlujo = NIdUsuarioFlujo;
+    public void setNIdDetalleInvestigacionFlujo(int NIdDetalleInvestigacionFlujo) {
+        this.NIdDetalleInvestigacionFlujo = NIdDetalleInvestigacionFlujo;
     }
 
-    public int getNIdArista() {
-        return NIdArista;
+    public int getNIdProcesoFlujo() {
+        return NIdProcesoFlujo;
     }
 
-    public void setNIdArista(int NIdArista) {
-        this.NIdArista = NIdArista;
+    public void setNIdProcesoFlujo(int NIdProcesoFlujo) {
+        this.NIdProcesoFlujo = NIdProcesoFlujo;
     }
 
-    public int getNIdUsuario() {
-        return NIdUsuario;
+    public int getNIdInvestigacion() {
+        return NIdInvestigacion;
     }
 
-    public void setNIdUsuario(int NIdUsuario) {
-        this.NIdUsuario = NIdUsuario;
+    public void setNIdInvestigacion(int NIdInvestigacion) {
+        this.NIdInvestigacion = NIdInvestigacion;
     }
+    
+
+    
+
+
 
 
 

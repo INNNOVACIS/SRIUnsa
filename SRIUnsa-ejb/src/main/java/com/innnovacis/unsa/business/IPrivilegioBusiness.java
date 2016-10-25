@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.innnovacis.unsa.dao;
+package com.innnovacis.unsa.business;
 
 import com.innnovacis.unsa.model.SRIPrivilegio;
 import java.util.List;
@@ -14,11 +14,11 @@ import javax.enterprise.context.ApplicationScoped;
  * @author Gen-Tya-TIConsul1
  */
 @ApplicationScoped
-public interface IPrivilegioDao {
-    SRIPrivilegio Insert(SRIPrivilegio entidad);
-    SRIPrivilegio Update(SRIPrivilegio entidad);
+public interface IPrivilegioBusiness {
+    int Insertar(SRIPrivilegio entidad);
+    boolean Update(SRIPrivilegio entidad);
     boolean Delete(SRIPrivilegio entidad);
-    SRIPrivilegio GetById(int idEntidad);
+    SRIPrivilegio Get(int idEntidad);
     List<SRIPrivilegio> GetAll();
-    
+
 }
